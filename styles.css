@@ -2,11 +2,12 @@
 body{
     padding:0px;
     margin:0px;
-    background:#eae8d9;
-    color:#848484;
+    background:#ffffff;
+    color:#000000;
+    font-size:16px;
 }
 h2, h3, h4{
-    color:#b6523b;
+    color:#f40909;
 }
 p{
     color:#000000;
@@ -47,17 +48,17 @@ ul{
     display:block;
     float:left;
     margin-right:10px; 
-    background-image:url('images/menu-item-right.jpg');
+    background-image:url(images/menu-item-right.jpg);
     background-repeat:no-repeat;
     background-position:top right;
-    background-color:#b6523b;
+    background-color:#f40909;
 }
 #header ul.menu li a{
     float:left;
     padding:10;
     font-size:30;
     display:block;
-    background-image:url('images/menu-item-left.jpg');
+    background-image:url(images/menu-item-left.jpg);
     background-repeat:no-repeat;
     background-position:top left;
     color:#ffffff;
@@ -67,10 +68,27 @@ ul{
     float:left;
     font-size:30;
     display:block;
-    background-image:url('images/menu-item-left.jpg');
+    background-image:url(images/menu-item-left.jpg);
     background-repeat:no-repeat;
     background-position:top left;
     color:#000000;
+    text-decoration:none;
+}
+#header ul.menu li.select{
+    list-style-type:none;
+    display:block;
+    float:left;
+    margin-right:10px; 
+    background-image:none;
+    background-color:#ffffff;
+}
+#header ul.menu li.select a{
+    float:left;
+    padding:10;
+    font-size:30;
+    display:block;
+    background-image:none;
+    color:#f40909;
     text-decoration:none;
 }
 
@@ -83,6 +101,8 @@ ul{
 }
 
 #main{
+    width:550px;
+    min-height:400px;
     float:left;
     margin:5px;
     text-align:left;
@@ -112,13 +132,13 @@ ul{
 }
 
 #news {
-    width:28%;
+    width:200px;
     float:left;
     margin:5;
     border:5 solid black;
     padding:10;
     text-align:left;
-    color:#b6523b;
+    color:#f40909;
 }
 #news h2{
     height:24px;
@@ -142,6 +162,7 @@ ul{
     margin-right:auto;
     text-align:center;
     color:#000000;
+    font-size:12px;
 }
 #footer p{
     padding: 14px 0 0 0;
@@ -154,4 +175,10 @@ ul{
     padding: 0 3px }
 #footer p a:hover{
     text-decoration:underline;
+}
+#footer td{
+    font-size:12px;
+}
+#footer td.c1{
+    width:240px;
 }
