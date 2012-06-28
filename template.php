@@ -8,23 +8,18 @@
         <div id="header">
             <img src="images/camecc_cursos_logo.png" alt="logo" name="logo" height="140" id="logo" />
             <ul class="menu">
-                <li class="select"><a href="index.html" title="Início">Início</a></li>
-                <li><a href="about.html" title="Sobre Nós">Sobre Nós</a></li>
-                <li><a href="courses.html" title="Cursos">Cursos</a></li>
-                <li><a href="contact.html" title="Contato">Contato</a></li>
+                <?php echo $menu; ?>
             </ul>
         </div>
         <div id="content">
             <div id="news">
                 <h2>Notícias</h2>
                 <ul>
-                    <li>Anúncio do curso de LaTeX no segundo semestre de 2012.</li>
+                    <?php echo $news; ?>
                 </ul>
             </div>
             <div id="main">
-                <h2>Bem vindo.</h2>
-                <p>O CAMECC Cursos é um órgão do CAMECC responsável por manter material de apóio técnico aos alunos do IMECC.</p>
-                <p>Todo o material está disponibilidado sob alguma das licenças <a href='http://creativecommons.org.br/'>Creative Commons</a> para facilitar sua utilização.</p>
+                <?php echo $main; ?>
             </div>
             <div class="clear"></div>
         </div>
