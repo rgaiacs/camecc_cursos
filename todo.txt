@@ -1,0 +1,6 @@
+TODO:
+* Arrumar logo.
+* Arrumar header.
+* Gerenciar notícias com banco de dados para notícias e arrumar sua exibição.
+* Otimização com AJAX.
+

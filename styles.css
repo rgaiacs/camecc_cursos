@@ -114,19 +114,11 @@ ul{
 #main p.headline2{
     margin-bottom:15px;
 }
-#main ul{
-    margin-left:1px;
-}
-#main ul li{
-    padding:0 0 0 26px;
-    margin-bottom:16px;
-    min-height:18px
-}
-#main ul li a{
-    color:#6c6c42;
+#main a{
+    color:#0000ff;
     text-decoration:underline;
 }
-#main ul li a:hover{
+#main a:hover{
     color:#000000;
     text-decoration:none;
 }
