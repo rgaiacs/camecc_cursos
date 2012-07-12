@@ -16,7 +16,7 @@ else{
 }
 
 $menu = "<li><a href='index.php' title='Início'>Início</a></li>
-<li class='select'><a href='about.php' title='Sobre Nós'>Sobre Nós</a></li>
+<li><a href='about.php' title='Sobre Nós'>Sobre Nós</a></li>
 <li><a href='courses.php' title='Cursos'>Cursos</a></li>
 <li><a href='contact.php' title='Contato'>Contato</a></li>";
 
@@ -32,15 +32,31 @@ while ($row = pg_fetch_row($result)) {
     $news = $news . "<li><a href='news?id=$row[0]'>$row[1]</a></li>";
 }
 
-$main = "<h2>História</h2>
-<p>O CAMECC Cursos foi idealizado por Raniere Silva em 2012 para organizar o curso de LaTeX preparado por ele e manter o material do curso disponível a todos.</p>
-<h2>Missão</h2>
-<p>Manter material de auxílio técnico aos alunos vinculados ao IMECC e organizar cursos com base neste material.</p>
-<h2>Valores</h2>
-<p>Liberdade e honestidade.</p>
-<h2>Equipe</h2>
-<p>Hoje, o CAMECC Cursos encontra-se sobre direção de [[Diretor]] com a colaboração de [[Colaboradores]].</p>
-<p>A seguir uma lista de antigos colaboradores: [[Antigos Colaboradores]]</p>";
+if(!isset($_GET["id"]) || empty($_GET["id"])){
+    $result = pg_query($con, "SELECT id, data, titulo FROM noticias");
+    if (!$result) {
+          echo "Erro na consulta.<br>";
+            exit;
+    }
+
+    $main = "<h2>Notícias</h2>
+        <table>
+        <tr>
+        <th>Data</th>
+        <th>Título</th>
+        </tr>";
+
+    while ($row = pg_fetch_row($result)) {
+        $main = $main . "<tr><td>$row[1]</td><td><a href='news?id=$row[0]'>$row[2]</a></td></tr>";
+    }
+
+    $main = $main . "</table>";
+}
+else{
+    $result = pg_query($con, "SELECT data, titulo, mensagem FROM noticias WHERE id=" . $_GET["id"]);
+    $row = pg_fetch_row($result);
+    $main = "<h2>Notícia</h2><p>Data: $row[0]</p><p>Título: $row[1]</p><p>Mensagem: $row[2]</p>";
+}
 
 @pg_close($con);
 

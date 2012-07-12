@@ -1,0 +1,74 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Started on 2012-07-12 11:47:01 BRT
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = off;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET escape_string_warning = off;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 140 (class 1259 OID 17539)
+-- Dependencies: 3
+-- Name: noticias; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE noticias (
+    id integer NOT NULL,
+    data date NOT NULL,
+    titulo text NOT NULL,
+    mensagem text
+);
+
+
+ALTER TABLE public.noticias OWNER TO postgres;
+
+--
+-- TOC entry 1772 (class 0 OID 17539)
+-- Dependencies: 140
+-- Data for Name: noticias; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY noticias (id, data, titulo, mensagem) FROM stdin;
+1	2012-07-14	Anúncio do curso de LaTeX no segundo semestre de 2012.	TODO
+\.
+
+
+--
+-- TOC entry 1771 (class 2606 OID 17546)
+-- Dependencies: 140 140
+-- Name: news_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY noticias
+    ADD CONSTRAINT news_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1777 (class 0 OID 0)
+-- Dependencies: 3
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2012-07-12 11:47:01 BRT
+
+--
+-- PostgreSQL database dump complete
+--
+

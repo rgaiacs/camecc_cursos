@@ -13,10 +13,11 @@
         </div>
         <div id="content">
             <div id="news">
-                <h2>Notícias</h2>
+                <h2>Últimas Notícias</h2>
                 <ul>
                     <?php echo $news; ?>
                 </ul>
+                <a href='news.php'>Mais notícias</a>
             </div>
             <div id="main">
                 <?php echo $main; ?>
