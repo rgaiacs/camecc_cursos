@@ -1,39 +1,10 @@
 <?php
-$host = "localhost";
-$user = "postgres";
-$pswd = "psql";
-$dbname = "camecc_cursos";
-$con = null;
+include('header.php');
+$menu = set_header('contact');
 
-$con = @pg_connect("host=$host user=$user
-    password=$pswd dbname=$dbname");
+require('news_last.php');
 
-if(!$con){
-    // echo "<h3>O sistema não está conectado à  [$dbname] em [$host].</h3>";
-}
-else{
-    // echo "<h3>O sistema está conectado à  [$dbname] em [$host].</h3>";
-}
-
-$menu = "<li><a href='index.php' title='Início'>Início</a></li>
-<li><a href='about.php' title='Sobre Nós'>Sobre Nós</a></li>
-<li><a href='courses.php' title='Cursos'>Cursos</a></li>
-<li class='select'><a href='contact.php' title='Contato'>Contato</a></li>";
-$news = "";
-
-$result = pg_query($con, "SELECT id, titulo FROM noticias LIMIT 5");
-if (!$result) {
-      echo "Erro na consulta.<br>";
-        exit;
-}
-
-while ($row = pg_fetch_row($result)) {
-    $news = $news . "<li><a href='news?id=$row[0]'>$row[1]</a></li>";
-}
-
-$main = "<p>A única forma de contato é por email:</p>";
-
-@pg_close($con);
+$main = "<p>A única forma de contato é por email: <a href='mailto:r.gaia.cs@gmail.com'>r.gaia.cs@gmail.com</a>.</p>";
 
 require('template.php');
 ?>

@@ -1,39 +1,12 @@
 <?php
-$host = "localhost";
-$user = "postgres";
-$pswd = "psql";
-$dbname = "camecc_cursos";
-$con = null;
+include('header.php');
+$menu = set_header('news');
 
-$con = @pg_connect("host=$host user=$user
-    password=$pswd dbname=$dbname");
+require('news_last.php');
 
-if(!$con){
-    // echo "<h3>O sistema não está conectado à  [$dbname] em [$host].</h3>";
-}
-else{
-    // echo "<h3>O sistema está conectado à  [$dbname] em [$host].</h3>";
-}
-
-$menu = "<li><a href='index.php' title='Início'>Início</a></li>
-<li><a href='about.php' title='Sobre Nós'>Sobre Nós</a></li>
-<li><a href='courses.php' title='Cursos'>Cursos</a></li>
-<li><a href='contact.php' title='Contato'>Contato</a></li>";
-
-$news = "";
-
-$result = pg_query($con, "SELECT id, titulo FROM noticias LIMIT 5");
-if (!$result) {
-      echo "Erro na consulta.<br>";
-        exit;
-}
-
-while ($row = pg_fetch_row($result)) {
-    $news = $news . "<li><a href='news?id=$row[0]'>$row[1]</a></li>";
-}
-
+$db = new PDO('sqlite:db.sqlite');
 if(!isset($_GET["id"]) || empty($_GET["id"])){
-    $result = pg_query($con, "SELECT id, data, titulo FROM noticias");
+    $result = $db->query("SELECT id, data, titulo FROM noticias ORDER BY id DESC");
     if (!$result) {
           echo "Erro na consulta.<br>";
             exit;
@@ -46,19 +19,19 @@ if(!isset($_GET["id"]) || empty($_GET["id"])){
         <th>Título</th>
         </tr>";
 
-    while ($row = pg_fetch_row($result)) {
+    foreach($result as $row){
         $main = $main . "<tr><td>$row[1]</td><td><a href='news?id=$row[0]'>$row[2]</a></td></tr>";
     }
 
     $main = $main . "</table>";
 }
 else{
-    $result = pg_query($con, "SELECT data, titulo, mensagem FROM noticias WHERE id=" . $_GET["id"]);
-    $row = pg_fetch_row($result);
+    $result = $db->query("SELECT data, titulo, mensagem FROM noticias WHERE id=" . $_GET["id"]);
+    $row = $result->fetch();
     $main = "<h2>Notícia</h2><p>Data: $row[0]</p><p>Título: $row[1]</p><p>Mensagem: $row[2]</p>";
 }
 
-@pg_close($con);
+$db = NULL;
 
 require('template.php');
 ?>
